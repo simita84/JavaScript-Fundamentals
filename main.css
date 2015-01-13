@@ -1,0 +1,13 @@
+.col-md-12{
+	padding: 10px;
+
+}
+button{
+	padding: 5px;
+	margin: 10px;
+	border-radius: 10px;
+	background-color: pink;
+}
+button:hover{
+	color: yellow;
+}

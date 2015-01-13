@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>JS Basics</title>	
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+	 <!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+	<!--Custom CSS-->
+	<link rel="stylesheet" type="text/css" href="main.css">
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
+	<!-- Latest compiled and minified JavaScript -->
+	<!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>-->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script> 
+	<script type="text/javascript">
+		function printArray(){
+			$("#array_code").show();
+			var code_text="";
+			var text=" ";
+			var index=0;
+			var x=[3,5,'Dojo','rocks',{name:'Micheal',title:'Sensie'}];
+			for (arrayElement in x){
+				if (!(typeof(x[arrayElement])==="object")){
+					text+= x[arrayElement];
+			    	text+=" ";		
+			    	index++;
+				}
+				else{ 
+					text+= "["+x[index].name+" "+x[index].title+"]";
+					index++; 
+				}		   
+			}
+			console.log(text);
+		}
+		function pushNewValue(){
+			var text=" ";
+			var index=0;
+			var x=[3,5,'Dojo','rocks',{name:'Micheal',title:'Sensie'}];
+			x.push(100);
+			for (arrayElement in x){
+				if (!(typeof(x[arrayElement])==="object")){
+					text+= x[arrayElement];
+			    	text+=" ";		
+			    	index++;
+				}
+				else{ 
+					text+= "["+x[index].name+" "+x[index].title+"]";
+					index++; 
+					text+=" ";		
+				}		   
+			}
+			console.log("New Array is "+ text);
+		}
+		function pushNewArray(){
+			var text=" ";
+			var arr=[4,5,6];
+			var x=[3,5,'Dojo','rocks',{name:'Micheal',title:'Sensie'}];
+			x.push(arr);
+			for (var index=0;index<x.length;index++){
+				text+=x[index];
+				text+=" ";
+			}
+			console.log(text);
+		}
+		function sumOfNumbers(){
+			var sum=0;
+			var timeElapsed;
+			var timeBefore=new Date().getTime();
+			for(var i=1;i<=500;i++){
+				 sum+=i;
+				}
+			var timeAfter=new Date().getTime();
+			timeElapsed=(timeAfter-timeBefore);
+			console.log("Sum 1- 500 is "+sum+","+"Time Taken "+timeElapsed+"ms ");
+		}
+		function sumOfMillion(){
+			var sum=0;
+			var timeElapsed;
+			var timeBefore=new Date().getTime();
+			for(var i=1;i<=1000000;i++){
+				 sum+=i;
+				}
+			var timeAfter=new Date().getTime();
+			timeElapsed=(timeAfter-timeBefore);
+			console.log("Sum 1- 1 million is "+sum+","+"Time Taken "+timeElapsed+"ms ");
+		}
+		$(document).ready(function(){
+			$(".col-md-12").hide();
+				$("#print_array").click(function(){
+  					$("#array_code").show();
+  					$("#push_code").hide();
+  					$("#push_array_code").hide();
+  					$("#sum_code").hide();
+  					$("#million_code").hide();
+					});
+	  			$("#push_new_value").click(function(){
+  					$("#push_code").show();
+  					$("#array_code").hide();
+  					$("#push_array_code").hide();
+  					$("#sum_code").hide();
+  					$("#million_code").hide();
+					});
+	  			$("#push_new_array").click(function(){
+  					$("#push_array_code").show();
+  					$("#array_code").hide();
+  					$("#push_code").hide();
+  					$("#sum_code").hide();
+  					$("#million_code").hide();
+					});
+	  			$("#sum_of_numbers").click(function(){
+  					$("#sum_code").show();
+  					$("#push_array_code").hide();
+  					$("#array_code").hide();
+  					$("#push_code").hide();
+  					$("#million_code").hide();
+					});
+  			    $("#sum_of_million").click(function(){
+  					$("#million_code").show();
+  					$("#push_array_code").hide();
+  					$("#array_code").hide();
+  					$("#push_code").hide();
+  					$("#sum_code").hide();
+					});	 
+		  });
+	</script>
+</head>
+<body>
+	<div class="container">
+		<h1 class="page-header">Javascript Basics</h1>
+        <h3>Click button to view Source Code and Console Output</h3>
+		<div class="row well">  
+			<div class="col-md-2">
+				 <button id="print_array" name="button" onclick=printArray();> Print Array</button>
+			</div>
+			<div class="col-md-2">
+				 <button id="push_new_value" name="button"  onclick=pushNewValue();>Push 100 to array</button>
+			</div>
+			<div class="col-md-2">
+				<button id="push_new_array" name="button"  onclick=pushNewArray();>Push new Array</button> 
+			</div>
+			<div class="col-md-2">
+				 <button id="sum_of_numbers" name="button"  onclick=sumOfNumbers();>Sum 1-500</button>
+			</div>	
+			<div class="col-md-2">
+				 <button id="sum_of_million" name="button"  onclick=sumOfMillion();>Sum 1-1000000</button>
+			</div>	
+		</div>		 
+	
+		<div id="row well">
+			<div class="col-md-12" id="array_code">
+		 		<h3>Print the array x=[3,5,'Dojo','rocks',{name:'Micheal',
+								title:'Sensie'}] and its type</h3>
+		 		<pre>
+		 			function printArray()
+		 			{
+						var text=" ";
+						var x=[3,5,'Dojo','rocks',{name:'Micheal',
+								title:'Sensie'}];
+						for (arrayElement in x){
+							text+= (x[arrayElement])+" : "+
+							typeof(x[arrayElement]);
+							text+=", ";
+						}
+						console.log(text);
+					}
+		 		</pre>
+		 	</div>
+		    <div class="col-md-12" id="push_code">
+		 		<h4>Push '100' to  x=[3,5,'Dojo','rocks',{name:'Micheal',
+								title:'Sensie'}]</h4>
+		 		<pre>
+		 			function pushNewValue(){
+						var text=" ";
+						var index=0;
+						var x=[3,5,'Dojo','rocks',{name:'Micheal',title:'Sensie'}];
+						x.push(100);
+						for (arrayElement in x){
+							if (!(typeof(x[arrayElement])==="object")){
+								text+= x[arrayElement];
+						    	text+=" ";		
+						    	index++;
+							}
+							else{ 
+								text+= "["+x[index].name+" "+x[index].title+"]";
+								index++; 
+								text+=" ";		
+							}		   
+						}
+						console.log("New Array is "+ text);
+					}
+		 		</pre>
+			</div>
+			<div class="col-md-12" id="push_array_code">
+				<h4>Push an Array at the end of X </h4>
+				<pre>
+					function pushNewArray(){
+					var text=" ";
+					var index=0;
+					var arr=[4,5,6];
+					var x=[3,5,'Dojo','rocks',{name:'Micheal',title:'Sensie'}];
+					x.push(arr);
+				</pre>
+			</div>
+			<div class="col-md-12" id="sum_code">
+				<h4>Sum of numbers 1-500</h4>
+				<pre>
+					function sumOfNumbers(){
+					var sum=0;
+					for(var i=1;i<=500;i++){
+						 sum+=i;
+						}
+					console.log("Sum 1-500 is "+sum);
+					}
+				</pre>
+			</div>
+			<div class="col-md-12" id="million_code">
+				<h4>Sum  of numbers 1 to million and Time Taken</h4>
+				<pre>
+					function sumOfMillion(){
+						var sum=0;
+						var timeElapsed;
+						var timeBefore=new Date().getTime();
+						for(var i=1;i<=1000000;i++){
+							 sum+=i;
+							}
+						var timeAfter=new Date().getTime();
+						timeElapsed=(timeAfter-timeBefore);
+						console.log("Sum 1- 1 million is "+sum+","+"Time Taken "+timeElapsed+"ms ");}
+				</pre>	
+			</div>
+		</div>
+	</div>
+</body>
+</html>
